@@ -54,7 +54,7 @@ const Missions = () => {
         backgroundPosition: "center",
     }}
     >
-      <Typography variant="h1" sx={{ fontSize: "2.5rem", fontWeight: "bold", marginBottom: "20px", color:"white"}}>
+      <Typography variant="h1" sx={{ fontSize: "2.5rem", fontWeight: "bold", marginBottom: "5px", color:"white"}}>
         Planet Express Missions
       </Typography>
     <Box sx={{ padding: 4 }}>
