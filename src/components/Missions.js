@@ -44,6 +44,7 @@ const Missions = () => {
   return (
     <Container sx={{ 
         paddingTop: "100px", 
+        minHeight: "100vh",
         width: "100%",
         overflowX: "hidden",
         backgroundAttachment: "fixed",
@@ -62,7 +63,7 @@ const Missions = () => {
           <Typography variant="h5" sx={{ marginBottom: 2, fontWeight: "bold", color: "white" }}>
             {missionGroup.category}
           </Typography>
-          <Grid container spacing={2}>
+          <Grid container spacing={2} >
             {missionGroup.items.map((mission) => (
               <Grid item xs={12} sm={6} key={mission.title}>
                 <Card sx={{ height: "100%" }}>

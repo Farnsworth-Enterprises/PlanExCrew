@@ -9,7 +9,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const App = () => {
   return (
-    <Container sx={{width: "100vw"}}>
+    <Container sx={{width: "100%"}}>
       <Router>
       <NavBar />
       <Routes>
