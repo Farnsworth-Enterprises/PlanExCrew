@@ -16,7 +16,20 @@ const About = () => {
         justifyContent: "flex-end", 
       }}
     >
-
+    <Typography
+        variant="h1"
+        sx={{
+          position: "absolute",
+          top: "10%",
+          left: "50%",
+          transform: "translateX(-50%)",
+          color: "white",
+          fontWeight: "bold",
+          textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+        }}
+      >
+        About
+      </Typography>
       <Paper
         elevation={6} 
         sx={{
@@ -33,10 +46,7 @@ const About = () => {
           How to Play PlanExCrew
         </Typography>
         <Typography variant="body1" sx={{ marginBottom: "20px" }}>
-          1. Assemble your crew by selecting members from the roster. <br />
-          2. Assign missions to your crew based on their strengths. <br />
-          3. Complete missions to finish the test. <br />
-          4. Make strategic decisions to survive in space!
+        From a list of potential crew members, choose your crew of at most 3 to tackle the mission presented to you based on a difficulty score. Each crew member will have a rating to help the user chose who best to chose for the mission. After selection, the user will receive a mission result based on the difficulty of the mission and the competency total of the chosen crew members.
         </Typography>
 
         <Typography variant="h5" gutterBottom>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Card, CardContent, Typography, Grid } from "@mui/material";
+import { Box, Container, Card, CardContent, Typography, Grid } from "@mui/material";
 
 // Additional Information Mapped to Characters
 const additionalInfo = {
@@ -165,16 +165,22 @@ const CrewList = () => {
   }, []);
 
   return (
+    <Box
+      sx={{
+        position: "relative",
+    minHeight: "100vh",
+    backgroundImage: `url("https://wallpapersok.com/images/hd/futurama-characters-colorful-poster-75g16m83ug7dnxjy.jpg")`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundAttachment: "fixed",
+      }}
+    >
     <Container sx={{ 
-        paddingTop: "90px",
-         textAlign: "center",
-         width: "100%",
-         overflowX: "hidden",
-         backgroundAttachment: "fixed",
-         textAlign: "center", 
-         backgroundImage: "url('https://wallpapersok.com/images/hd/futurama-characters-colorful-poster-75g16m83ug7dnxjy.jpg')", 
-         backgroundSize: "cover",
-         backgroundPosition: "center",
+        paddingTop: "5%",
+        minHeight: "90vh", 
+        overflowX: "hidden",
+        textAlign: "center",
           }}>
       <Typography variant="h1" sx={{ fontSize: "2.5rem", fontWeight: "bold", marginBottom: "20px", color: "white"}}>
         Planet Express Crew
@@ -238,6 +244,7 @@ const CrewList = () => {
         ))}
       </Grid>
     </Container>
+    </Box>
   );
 };
 
