@@ -162,7 +162,7 @@ const CrewList = () => {
     };
 
     fetchAllCharacters();
-  }, []);
+  }, [selectedCharacterIds]);
 
   return (
     <Box
