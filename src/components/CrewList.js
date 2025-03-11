@@ -176,11 +176,10 @@ const FuturamaCharacters = () => {
           <Card sx={{ display: "flex", flexDirection: "column", height: "100%", width: "100%", alignItems: "center" }}>
             <CardContent sx={{ flexGrow: 1, display: "flex", flexDirection: "column", alignItems: "center" }}>
               
-              {/* Fixed height for name to ensure alignment */}
               <Typography
                 variant="h6"
                 sx={{
-                  minHeight: "48px", // Ensures names don’t push content down
+                  minHeight: "48px", 
                   display: "flex",
                   alignItems: "center",
                   textAlign: "center",
@@ -189,7 +188,6 @@ const FuturamaCharacters = () => {
                 {char.name}
               </Typography>
 
-              {/* Image remains at a consistent position */}
               {char.image && (
                 <img
                   src={char.image}
@@ -205,7 +203,6 @@ const FuturamaCharacters = () => {
                 />
               )}
 
-              {/* Additional Info */}
               {additionalInfo[char.name] && (
                 <>
                   <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
