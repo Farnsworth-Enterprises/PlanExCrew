@@ -42,16 +42,22 @@ const missions = [
 
 const Missions = () => {
   return (
+    <Box
+          sx={{
+            position: "relative",
+        minHeight: "100vh",
+        backgroundImage: `url("https://i0.wp.com/the-avocado.org/wp-content/uploads/2022/07/831494-1.jpg?fit=1920%2C1080&quality=80&ssl=1")`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundAttachment: "fixed",
+          }}
+        >
     <Container sx={{ 
         paddingTop: "100px", 
         minHeight: "100vh",
         width: "100%",
-        overflowX: "hidden",
-        backgroundAttachment: "fixed",
         textAlign: "center", 
-        backgroundImage: "url('https://i0.wp.com/the-avocado.org/wp-content/uploads/2022/07/831494-1.jpg?fit=1920%2C1080&quality=80&ssl=1')", 
-        backgroundSize: "cover",
-        backgroundPosition: "center",
     }}
     >
       <Typography variant="h1" sx={{ fontSize: "2.5rem", fontWeight: "bold", marginBottom: "5px", color:"white"}}>
@@ -89,6 +95,7 @@ const Missions = () => {
       ))}
     </Box>
     </Container>
+    </Box>
   );
 };
 

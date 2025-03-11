@@ -16,7 +16,20 @@ const About = () => {
         justifyContent: "flex-end", 
       }}
     >
-
+    <Typography
+        variant="h1"
+        sx={{
+          position: "absolute",
+          top: "10%",
+          left: "50%",
+          transform: "translateX(-50%)",
+          color: "white",
+          fontWeight: "bold",
+          textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+        }}
+      >
+        About
+      </Typography>
       <Paper
         elevation={6} 
         sx={{
