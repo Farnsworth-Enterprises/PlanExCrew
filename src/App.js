@@ -1,14 +1,24 @@
 import React from "react";
 import CrewList from "./components/CrewList";
+import NavBar from "./components/NavBar";
+import Missions from "./components/Missions";
+import About from "./components/About";
+import Home from "./components/Home";
 import { Container, Typography } from "@mui/material";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const App = () => {
   return (
-    <Container>
-      <Typography variant="h3" align="center" gutterBottom>
-        Planet Express Crew
-      </Typography>
-      <CrewList />
+    <Container sx={{width: "100vw"}}>
+      <Router>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/crew" element={<CrewList />} />
+        <Route path="/missions" element={<Missions />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+      </Router>
     </Container>
   );
 };
