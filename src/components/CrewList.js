@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, CardContent, Typography, Grid } from "@mui/material";
+import { Container, Card, CardContent, Typography, Grid } from "@mui/material";
 
 // Additional Information Mapped to Characters
 const additionalInfo = {
@@ -165,63 +165,79 @@ const FuturamaCharacters = () => {
   }, []);
 
   return (
-    <Grid container spacing={4} justifyContent="center">
-      {characters.length === 0 && (
-        <Typography variant="h6" align="center">
-          Loading characters...
-        </Typography>
-      )}
-      {characters.map((char) => (
-        <Grid item key={char.id} xs={12} sm={6} md={4} lg={3} sx={{ display: "flex", alignItems: "stretch" }}>
-          <Card sx={{ display: "flex", flexDirection: "column", height: "100%", width: "100%", alignItems: "center" }}>
-            <CardContent sx={{ flexGrow: 1, display: "flex", flexDirection: "column", alignItems: "center" }}>
-              
-              <Typography
-                variant="h6"
-                sx={{
-                  minHeight: "48px", 
-                  display: "flex",
-                  alignItems: "center",
-                  textAlign: "center",
-                }}
-              >
-                {char.name}
-              </Typography>
+    <Container sx={{ 
+        paddingTop: "90px",
+         textAlign: "center",
+         width: "100%",
+         overflowX: "hidden",
+         backgroundAttachment: "fixed",
+         textAlign: "center", 
+         backgroundImage: "url('https://wallpapersok.com/images/hd/futurama-characters-colorful-poster-75g16m83ug7dnxjy.jpg')", 
+         backgroundSize: "cover",
+         backgroundPosition: "center",
+          }}>
+      <Typography variant="h1" sx={{ fontSize: "2.5rem", fontWeight: "bold", marginBottom: "20px", color: "white"}}>
+        Planet Express Crew
+      </Typography>
 
-              {char.image && (
-                <img
-                  src={char.image}
-                  alt={char.name}
-                  style={{
-                    width: "120px",
-                    height: "120px",
-                    objectFit: "cover",
-                    objectPosition: "top",
-                    borderRadius: "8px",
-                    margin: "10px 0",
+      <Grid container spacing={4} justifyContent="center">
+        {characters.length === 0 && (
+          <Typography variant="h6" align="center">
+            Loading characters...
+          </Typography>
+        )}
+        {characters.map((char) => (
+          <Grid item key={char.id} xs={12} sm={6} md={4} lg={3} sx={{ display: "flex", alignItems: "stretch" }}>
+            <Card sx={{ display: "flex", flexDirection: "column", height: "100%", width: "100%", alignItems: "center" }}>
+              <CardContent sx={{ flexGrow: 1, display: "flex", flexDirection: "column", alignItems: "center" }}>
+                
+                <Typography
+                  variant="h6"
+                  sx={{
+                    minHeight: "48px", 
+                    display: "flex",
+                    alignItems: "center",
+                    textAlign: "center",
                   }}
-                />
-              )}
+                >
+                  {char.name}
+                </Typography>
 
-              {additionalInfo[char.name] && (
-                <>
-                  <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
-                    Rating: {additionalInfo[char.name].rating}
-                  </Typography>
-                  <div style={{ textAlign: "left", marginTop: "8px" }}>
-                    {additionalInfo[char.name].details.map((point, index) => (
-                      <Typography key={index} variant="body2" sx={{ marginTop: "4px" }}>
-                        {point}
-                      </Typography>
-                    ))}
-                  </div>
-                </>
-              )}
-            </CardContent>
-          </Card>
-        </Grid>
-      ))}
-    </Grid>
+                {char.image && (
+                  <img
+                    src={char.image}
+                    alt={char.name}
+                    style={{
+                      width: "120px",
+                      height: "120px",
+                      objectFit: "cover",
+                      objectPosition: "top",
+                      borderRadius: "8px",
+                      margin: "10px 0",
+                    }}
+                  />
+                )}
+
+                {additionalInfo[char.name] && (
+                  <>
+                    <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
+                      Rating: {additionalInfo[char.name].rating}
+                    </Typography>
+                    <div style={{ textAlign: "left", marginTop: "8px" }}>
+                      {additionalInfo[char.name].details.map((point, index) => (
+                        <Typography key={index} variant="body2" sx={{ marginTop: "4px" }}>
+                          {point}
+                        </Typography>
+                      ))}
+                    </div>
+                  </>
+                )}
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+    </Container>
   );
 };
 
