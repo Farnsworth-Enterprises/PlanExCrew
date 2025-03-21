@@ -7,7 +7,7 @@ const About = () => {
       sx={{
         width: "100vw",
         height: "100vh",
-        backgroundImage: `url("/miscInfo/aboutBackground.jpg")`,
+        backgroundImage: `url("/aboutBackground.jpg")`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
