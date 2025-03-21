@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 
-import { Grid, Container, Typography, Card, CardContent, CardMedia } from "@mui/material";
+import {
+	Grid,
+	Container,
+	Typography,
+	Card,
+	CardContent,
+	CardMedia,
+} from "@mui/material";
 
 import MissionCard from "./MissionCard";
 import CrewCard from "./CrewCard";
@@ -71,26 +78,34 @@ const Game = () => {
 		setCrew([]);
 	};
 
-
 	return (
-		<Container>
-			<Typography variant="h4"> Current Mission</Typography>
-			<MissionCard mission={randomMission} />
-			<Typography variant="h4" sx={{ marginTop: 3 }}>
-				Available Crew
-			</Typography>
-			<Grid container spacing={2} sx={{ marginTop: 1 }}>
-				{characters.map((character) => (
-				<Grid item xs={12} sm={6} md={4} lg={3} key={character.id}>
-					<CrewCard 
-					character={character}
-					additionalInfo={additionalInfo}
-					onClick={onSelectCrew}
-					/>
+		<>
+			<Container>
+				<Typography variant="h4"> Current Mission</Typography>
+				<MissionCard mission={randomMission} />
+				<Typography variant="h4" sx={{ marginTop: 3 }}>
+					Available Crew
+				</Typography>
+				<Grid container spacing={2} sx={{ marginTop: 1 }}>
+					{characters.map((character) => (
+						<Grid
+							item
+							xs={12}
+							sm={6}
+							md={4}
+							lg={3}
+							key={character.id}
+						>
+							<CrewCard
+								character={character}
+								additionalInfo={additionalInfo}
+								onSelectCrew={onSelectCrew}
+							/>
+						</Grid>
+					))}
 				</Grid>
-				))}
-			</Grid>
-		</Container>
+			</Container>
+		</>
 	);
 };
 
