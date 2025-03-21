@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+import { Grid, Container, Typography, Card, CardContent, CardMedia } from "@mui/material";
+
 import MissionCard from "./MissionCard";
 import CrewCard from "./CrewCard";
 import { missions } from "./Missions";
@@ -19,6 +21,7 @@ const selectedCharacterIds = [
 
 const Game = () => {
 	const [characters, setCharacters] = useState([]);
+
 	const [crew, setCrew] = useState([]);
 
 	useEffect(() => {
@@ -68,41 +71,26 @@ const Game = () => {
 		setCrew([]);
 	};
 
+
 	return (
-		<div>
-			<Box
-				sx={{
-					display: "flex",
-					justifyContent: "center",
-					alignItems: "center",
-				}}
-			>
-				<Button onClick={resetCrew}>Reset Crew</Button>
-			</Box>
-			<h2>Missions</h2>
+		<Container>
+			<Typography variant="h4"> Current Mission</Typography>
 			<MissionCard mission={randomMission} />
-
-			<h2>Selected Crew</h2>
-			{crew.length > 0 &&
-				crew.map((character, index) => (
-					<CrewCard
-						key={index}
-						character={character}
-						additionalInfo={additionalInfo}
-					/>
-				))}
-			{crew.length === 0 && <h2>No crew selected</h2>}
-
-			<h2>Crew List</h2>
-			{characters.map((character, index) => (
-				<CrewCard
-					key={index}
+			<Typography variant="h4" sx={{ marginTop: 3 }}>
+				Available Crew
+			</Typography>
+			<Grid container spacing={2} sx={{ marginTop: 1 }}>
+				{characters.map((character) => (
+				<Grid item xs={12} sm={6} md={4} lg={3} key={character.id}>
+					<CrewCard 
 					character={character}
 					additionalInfo={additionalInfo}
-					onSelectCrew={onSelectCrew}
-				/>
-			))}
-		</div>
+					onClick={onSelectCrew}
+					/>
+				</Grid>
+				))}
+			</Grid>
+		</Container>
 	);
 };
 
