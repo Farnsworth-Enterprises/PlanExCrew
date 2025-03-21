@@ -11,15 +11,12 @@ const randomMission =
 		Math.floor(Math.random() * missions[randIndex].items.length)
 	];
 
-
-
-
 const Game = () => {
 	return (
 		<div>
 			<h1>Game</h1>
 			<h2>Missions</h2>
-            <MissionCard mission={randomMission} />
+			<MissionCard mission={randomMission} />
 			<h2>Crew</h2>
 			<ul>
 				{Object.keys(additionalInfo).map((character, index) => (

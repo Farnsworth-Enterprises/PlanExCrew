@@ -144,16 +144,21 @@ export const additionalInfo = {
 	},
 };
 
-const selectedCharacterIds = [1, 16, 425, 420, 421, 424, 382, 423, 278, 336, 320, 305, 279, 177, 179];
+const selectedCharacterIds = [
+	1, 16, 425, 420, 421, 424, 382, 423, 278, 336, 320, 305, 279, 177, 179,
+];
 
 const CrewList = () => {
-  const [characters, setCharacters] = useState([]);
-  
-  useEffect(() => {
-    const fetchCharacter = async (id) => {
-      try {
-        const response = await fetch(`https://futuramaapi.com/api/characters/${id}`);
-        if (!response.ok) throw new Error(`Failed to fetch character ${id}`);
+	const [characters, setCharacters] = useState([]);
+
+	useEffect(() => {
+		const fetchCharacter = async (id) => {
+			try {
+				const response = await fetch(
+					`https://futuramaapi.com/api/characters/${id}`
+				);
+				if (!response.ok)
+					throw new Error(`Failed to fetch character ${id}`);
 
 				const data = await response.json();
 				return data;
@@ -171,8 +176,8 @@ const CrewList = () => {
 			setCharacters(results.filter((char) => char !== null));
 		};
 
-    fetchAllCharacters();
-  }, []);
+		fetchAllCharacters();
+	}, []);
 
 	return (
 		<Box
