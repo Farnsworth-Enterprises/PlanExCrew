@@ -20,7 +20,7 @@ const Home = () => {
 				sx={{
 					position: "absolute",
 
-					bottom: 100,
+					bottom: 45,
 					left: 0,
 					right: 0,
 					textAlign: "center",
@@ -45,7 +45,12 @@ const Home = () => {
 					sx={{
 						mt: 2,
 						textDecoration: "underline",
-						textShadow: "3px 3px 6px rgba(0,0,0,0.8)",
+						textShadow: "3px 3px 6px rgba(192, 17, 17, 0.8)",
+						// backgroundColor: "rgba(7, 7, 7, 0.7)",
+						// borderRadius: "8px",
+						// padding: "10px",
+						fontWeight: "bold",
+						// border: "4px solid #7FFFD4",
 					}}
 				>
 					Create a crew and complete missions!
