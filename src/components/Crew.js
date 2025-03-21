@@ -139,9 +139,9 @@ const additionalInfo = {
 
 const CrewList = () => {
   const [characters, setCharacters] = useState([]);
-  const selectedCharacterIds = [1, 16, 425, 420, 421, 424, 382, 423, 278, 336, 320, 305, 279, 177, 179];
-
+  
   useEffect(() => {
+    const selectedCharacterIds = [1, 16, 425, 420, 421, 424, 382, 423, 278, 336, 320, 305, 279, 177, 179];
     const fetchCharacter = async (id) => {
       try {
         const response = await fetch(`https://futuramaapi.com/api/characters/${id}`);
