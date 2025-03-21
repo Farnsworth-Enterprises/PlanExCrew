@@ -17,6 +17,7 @@ const MissionCard = ({ mission }) => {
 					sx={{
 						display: "flex",
 						alignItems: "center",
+						justifyContent: "center",
 					}}
 				>
 					Difficulty:
