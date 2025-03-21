@@ -10,6 +10,7 @@ const CrewCard = ({ character, additionalInfo }) => {
 				height: "100%",
 				width: "100%",
 				alignItems: "center",
+				border: "1px solid #ccc",
 			}}
 		>
 			<CardContent

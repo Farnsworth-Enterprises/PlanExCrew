@@ -19,33 +19,37 @@ const Game = () => {
 	const [characters, setCharacters] = useState([]);
 	const [selectedCrew, setSelectedCrew] = useState([]);
 
-	const fetchCharacter = async (id) => {
-		try {
-			const response = await fetch(
-				`https://futuramaapi.com/api/characters/${id}`
-			);
-			if (!response.ok)
-				throw new Error(`Failed to fetch character ${id}`);
-
-			const data = await response.json();
-			return data;
-		} catch (error) {
-			console.error("Error fetching character:", error);
-			return null;
-		}
-	};
-
-	const fetchAllCharacters = async () => {
-		const promises = selectedCharacterIds.map((id) => fetchCharacter(id));
-		const results = await Promise.all(promises);
-		setCharacters(results.filter((char) => char !== null));
-	};
 	useEffect(() => {
+		const fetchCharacter = async (id) => {
+			try {
+				const response = await fetch(
+					`https://futuramaapi.com/api/characters/${id}`
+				);
+				if (!response.ok)
+					throw new Error(`Failed to fetch character ${id}`);
+
+				const data = await response.json();
+				return data;
+			} catch (error) {
+				console.error("Error fetching character:", error);
+				return null;
+			}
+		};
+
+		const fetchAllCharacters = async () => {
+			const promises = selectedCharacterIds.map((id) =>
+				fetchCharacter(id)
+			);
+			const results = await Promise.all(promises);
+			setCharacters(results.filter((char) => char !== null));
+		};
+
 		fetchAllCharacters();
 	}, []);
 
 	const onSelectCrew = (character) => {
 		setSelectedCrew([...selectedCrew, character]);
+		console.log(selectedCrew);
 	};
 
 	return (
@@ -59,6 +63,7 @@ const Game = () => {
 					key={character.id}
 					character={character}
 					additionalInfo={additionalInfo}
+					onClick={onSelectCrew}
 				/>
 			))}
 		</div>
