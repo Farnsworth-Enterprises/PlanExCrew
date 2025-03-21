@@ -1,7 +1,7 @@
 import React from "react";
-import { Card, CardContent, Typography } from "@mui/material";
+import { Card, CardContent, Typography, Button } from "@mui/material";
 
-const CrewCard = ({ character, additionalInfo }) => {
+const CrewCard = ({ character, additionalInfo, onSelectCrew }) => {
 	return (
 		<Card
 			sx={{
@@ -77,6 +77,9 @@ const CrewCard = ({ character, additionalInfo }) => {
 						</>
 					)}
 				</Typography>
+				<Button onClick={() => onSelectCrew(character)}>
+					Select {character.name}
+				</Button>
 			</CardContent>
 		</Card>
 	);
