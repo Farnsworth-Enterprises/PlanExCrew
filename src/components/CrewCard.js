@@ -1,8 +1,8 @@
 import React from "react";
 
-import { Card, CardContent, Typography } from "@mui/material";
+import { Card, CardContent, Typography, Button } from "@mui/material";
 
-const CrewCard = ({ character, additionalInfo }) => {
+const CrewCard = ({ character, additionalInfo, onSelectCrew }) => {
 	return (
 		<Card
 			sx={{
@@ -14,7 +14,7 @@ const CrewCard = ({ character, additionalInfo }) => {
 				border: "1px solid #ccc",
 				borderRadius: "12px",
 				boxShadow: "3px 3px 10px rgba(0, 0, 0, 0.1)",
-				padding: 2, 
+				padding: 2,
 			}}
 		>
 			<Typography
@@ -50,7 +50,7 @@ const CrewCard = ({ character, additionalInfo }) => {
 					flexDirection: "column",
 					alignItems: "center",
 					justifyContent: "space-between",
-					paddingBottom: 3, 
+					paddingBottom: 3,
 				}}
 			>
 				{additionalInfo[character.name] && (
@@ -64,11 +64,10 @@ const CrewCard = ({ character, additionalInfo }) => {
 						Rating: {additionalInfo[character.name].rating}
 					</Typography>
 				)}
-
 			</CardContent>
-<Button onClick={() => onSelectCrew(character)}>
-					Select {character.name}
-				</Button>
+			<Button onClick={() => onSelectCrew(character)}>
+				Select {character.name}
+			</Button>
 		</Card>
 	);
 };
