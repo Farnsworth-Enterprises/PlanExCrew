@@ -7,6 +7,8 @@ import CrewCard from "./CrewCard";
 import { missions } from "./Missions";
 import { additionalInfo } from "./Crew";
 
+import { Button, Box } from "@mui/material";
+
 const randIndex = Math.floor(Math.random() * missions.length);
 const randomMission =
 	missions[randIndex].items[
@@ -19,7 +21,8 @@ const selectedCharacterIds = [
 
 const Game = () => {
 	const [characters, setCharacters] = useState([]);
-	const [selectedCrew, setSelectedCrew] = useState([]);
+
+	const [crew, setCrew] = useState([]);
 
 	useEffect(() => {
 		const fetchCharacter = async (id) => {
@@ -50,9 +53,24 @@ const Game = () => {
 	}, []);
 
 	const onSelectCrew = (character) => {
-		setSelectedCrew([...selectedCrew, character]);
-		console.log(selectedCrew);
+		if (crew.length === 3) {
+			console.log("Crew is full");
+			console.log(crew);
+			return;
+		}
+
+		if (crew.includes(character)) {
+			console.log("Character already in crew");
+			return;
+		}
+
+		setCrew([...crew, character]);
 	};
+
+	const resetCrew = () => {
+		setCrew([]);
+	};
+
 
 	return (
 		<Container>

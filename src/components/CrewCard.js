@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Card, CardContent, Typography } from "@mui/material";
 
 const CrewCard = ({ character, additionalInfo }) => {
@@ -63,7 +64,11 @@ const CrewCard = ({ character, additionalInfo }) => {
 						Rating: {additionalInfo[character.name].rating}
 					</Typography>
 				)}
+
 			</CardContent>
+<Button onClick={() => onSelectCrew(character)}>
+					Select {character.name}
+				</Button>
 		</Card>
 	);
 };
