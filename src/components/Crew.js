@@ -206,6 +206,10 @@ const CrewList = () => {
 						fontWeight: "bold",
 						marginBottom: "20px",
 						color: "white",
+            backgroundColor: "rgba(7, 7, 7, 0.7)",
+            padding: "10px", 
+            borderRadius: "8px",
+            border: "4px solid #7FFFD4",
 					}}
 				>
 					Planet Express Crew

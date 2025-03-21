@@ -24,7 +24,7 @@ const About = () => {
 					left: "50%",
 					transform: "translateX(-50%)",
 					color: "white",
-					fontWeight: "bold",
+					fontWeight: "bolder",
 					textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
 				}}
 			>
