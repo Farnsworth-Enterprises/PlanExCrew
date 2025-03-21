@@ -27,8 +27,6 @@ const NavBar = () => {
 			<Toolbar>
 				<Typography
 					variant="h6"
-					component={Link}
-					to="/"
 					sx={{
 						flexGrow: 1,
 						textDecoration: "none",
@@ -36,7 +34,15 @@ const NavBar = () => {
 						fontWeight: "bold",
 					}}
 				>
-					Home
+					<Link
+						to="/"
+						style={{
+							textDecoration: "none",
+							color: "inherit",
+						}}
+						>
+						Home
+					</Link>
 				</Typography>
 
 				<IconButton

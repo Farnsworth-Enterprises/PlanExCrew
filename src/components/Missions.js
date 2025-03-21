@@ -172,6 +172,10 @@ const Missions = () => {
 						fontWeight: "bold",
 						marginBottom: "5px",
 						color: "white",
+            backgroundColor: "rgba(7, 7, 7, 0.7)",
+            padding: "10px", 
+            borderRadius: "8px",
+            border: "4px solid #7FFFD4",
 					}}
 				>
 					Planet Express Missions
@@ -188,6 +192,11 @@ const Missions = () => {
 									marginBottom: 2,
 									fontWeight: "bold",
 									color: "white",
+                  backgroundColor: "rgba(7, 7, 7, 0.7)",
+                  padding: "10px", 
+                  borderRadius: "8px",
+                  border: "2px solid white",
+                  display: "inline-block",
 								}}
 							>
 								{missionGroup.category}
