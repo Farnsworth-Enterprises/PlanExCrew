@@ -7,7 +7,7 @@ const About = () => {
       sx={{
         width: "100vw",
         height: "100vh",
-        backgroundImage: `url("https://images.alphacoders.com/236/236781.jpg")`,
+        backgroundImage: `url("/miscInfo/aboutBackground.jpg")`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
