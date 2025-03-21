@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+import { Grid, Container, Typography, Card, CardContent, CardMedia } from "@mui/material";
+
 import MissionCard from "./MissionCard";
 import CrewCard from "./CrewCard";
 import { missions } from "./Missions";
@@ -53,20 +55,24 @@ const Game = () => {
 	};
 
 	return (
-		<div>
-			<h1>Game</h1>
-			<h2>Missions</h2>
+		<Container>
+			<Typography variant="h4"> Current Mission</Typography>
 			<MissionCard mission={randomMission} />
-			<h2>Crew</h2>
-			{characters.map((character) => (
-				<CrewCard
-					key={character.id}
+			<Typography variant="h4" sx={{ marginTop: 3 }}>
+				Available Crew
+			</Typography>
+			<Grid container spacing={2} sx={{ marginTop: 1 }}>
+				{characters.map((character) => (
+				<Grid item xs={12} sm={6} md={4} lg={3} key={character.id}>
+					<CrewCard 
 					character={character}
 					additionalInfo={additionalInfo}
 					onClick={onSelectCrew}
-				/>
-			))}
-		</div>
+					/>
+				</Grid>
+				))}
+			</Grid>
+		</Container>
 	);
 };
 
