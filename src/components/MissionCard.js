@@ -1,15 +1,16 @@
 import React from "react";
-import { Card, CardContent, Typography } from "@mui/material";
+import { Card, CardContent, Typography, Box } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 
 const MissionCard = ({ mission }) => {
 	return (
+		<Box sx={{ paddingTop: 3}}>
 		<Card sx={{ height: "100%" }}>
 			<CardContent>
-				<Typography variant="h6" sx={{ fontWeight: "bold" }}>
+				<Typography variant="h6" sx={{ fontWeight: "bold", textAlign: 'center' }}>
 					{mission.title} ({mission.episode})
 				</Typography>
-				<Typography variant="body1" sx={{ marginBottom: 1 }}>
+				<Typography variant="body1" sx={{ marginBottom: 1, textAlign: 'center' }}>
 					Delivery: {mission.delivery}
 				</Typography>
 				<Typography
@@ -36,6 +37,7 @@ const MissionCard = ({ mission }) => {
 				</Typography>
 			</CardContent>
 		</Card>
+		</Box>
 	);
 };
 
