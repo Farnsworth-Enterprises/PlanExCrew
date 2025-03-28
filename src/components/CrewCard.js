@@ -11,9 +11,16 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import AddIcon from "@mui/icons-material/Add";
 
-const CrewCard = ({ character, onSelectCrew, isSelected, onRemove }) => {
+const CrewCard = ({
+	character,
+	onSelectCrew,
+	isSelected,
+	onRemove,
+	isAvailableCrew = false,
+}) => {
 	return (
 		<Card
+			data-testid="crew-card"
 			sx={{
 				display: "flex",
 				flexDirection: "column",
@@ -26,13 +33,27 @@ const CrewCard = ({ character, onSelectCrew, isSelected, onRemove }) => {
 					? "0 0 15px rgba(76, 175, 80, 0.3)"
 					: "3px 3px 10px rgba(0, 0, 0, 0.1)",
 				padding: 2,
-				backgroundColor: "white",
 				position: "relative",
 				transition: "all 0.3s ease",
+				backgroundColor: "white",
 				"&:hover": {
 					transform: "translateY(-5px)",
 					boxShadow: "0 5px 15px rgba(0, 0, 0, 0.2)",
 				},
+				"&::after":
+					isSelected && isAvailableCrew
+						? {
+								content: '""',
+								position: "absolute",
+								top: 0,
+								left: 0,
+								right: 0,
+								bottom: 0,
+								backgroundColor: "rgba(0, 0, 0, 0.3)",
+								borderRadius: "12px",
+								zIndex: 1,
+						  }
+						: {},
 			}}
 		>
 			<Box
@@ -43,8 +64,9 @@ const CrewCard = ({ character, onSelectCrew, isSelected, onRemove }) => {
 					zIndex: 2,
 				}}
 			>
-				{isSelected ? (
+				{isSelected && !isAvailableCrew ? (
 					<IconButton
+						data-testid="remove-crew-button"
 						onClick={(e) => {
 							e.stopPropagation();
 							onRemove(character);
@@ -58,8 +80,9 @@ const CrewCard = ({ character, onSelectCrew, isSelected, onRemove }) => {
 					>
 						<CloseIcon />
 					</IconButton>
-				) : (
+				) : !isSelected && isAvailableCrew ? (
 					<IconButton
+						data-testid="add-crew-button"
 						onClick={(e) => {
 							e.stopPropagation();
 							onSelectCrew(character);
@@ -73,17 +96,19 @@ const CrewCard = ({ character, onSelectCrew, isSelected, onRemove }) => {
 					>
 						<AddIcon />
 					</IconButton>
-				)}
+				) : null}
 			</Box>
 
 			<CardActionArea
-				onClick={() => !isSelected && onSelectCrew(character)}
+				data-testid="crew-card-area"
+				onClick={() =>
+					!isSelected && isAvailableCrew && onSelectCrew(character)
+				}
 				sx={{
 					width: "100%",
 					display: "flex",
 					flexDirection: "column",
 					alignItems: "center",
-					
 				}}
 			>
 				<Typography
@@ -92,7 +117,6 @@ const CrewCard = ({ character, onSelectCrew, isSelected, onRemove }) => {
 						textAlign: "center",
 						fontWeight: "bold",
 						marginBottom: "8px",
-						// color: isSelected ? "#2E7D32" : "inherit",
 					}}
 				>
 					{character.name}
@@ -119,10 +143,9 @@ const CrewCard = ({ character, onSelectCrew, isSelected, onRemove }) => {
 						flexDirection: "column",
 						alignItems: "center",
 						justifyContent: "space-between",
-						
 					}}
 				>
-					{isSelected && (
+					{isSelected && !isAvailableCrew && (
 						<Typography
 							variant="subtitle1"
 							sx={{ fontWeight: "bold" }}
