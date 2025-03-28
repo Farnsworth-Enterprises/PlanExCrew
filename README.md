@@ -1,3 +1,7 @@
+<p align="center">
+  <img width="460" height="460" src="https://i.pinimg.com/736x/6d/24/ca/6d24ca1179de2029054c346a7febb40b.jpg">
+</p>
+
 # PlanExCrew
 
 PlanExCrew is a web-based application inspired by the animated series Futurama. It allows users to assemble a crew of up to three members to undertake various missions, each with a specified difficulty level. By evaluating each potential crew member's rating, users can strategically select the most suitable team to successfully complete missions.
