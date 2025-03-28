@@ -13,13 +13,13 @@ PlanExCrew is a web-based application inspired by the animated series Futurama. 
 
 To Run PlanExCrew locally:
 
-1. Clone the Repository:
+1. Clone the Repository: /n
     `git clone https://github.com/Farnsworth-Enterprises/PlanExCrew.git`
-2. Navigate to the Project Directory:
+2. Navigate to the Project Directory: /n
     `cd PlanExCrew`
-3. Install Dependencies:
+3. Install Dependencies: /n
     `npm install`
-4. Start the Development Server:
+4. Start the Development Server: /n
    `npm start`
 
 ## Live Demo
