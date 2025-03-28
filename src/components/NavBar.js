@@ -59,7 +59,7 @@ const NavBar = () => {
 					onClose={toggleDrawer(false)}
 				>
 					<List sx={{ width: 200 }}>
-						{["Crew", "Missions", "About"].map((text) => (
+						{["Crew", "Missions", "About", "Game"].map((text) => (
 							<ListItem
 								button
 								key={text}
