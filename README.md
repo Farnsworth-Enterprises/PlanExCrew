@@ -8,3 +8,29 @@ PlanExCrew is a web-based application inspired by the animated series Futurama. 
 - Mission Assignment: Engage in missions with varying difficulty levels, requiring strategic crew assembly for successful completion.​
 
 - Outcome Evaluation: Receive results based on the combined competency of the selected crew members relative to the mission's difficulty.
+
+## Getting Started
+
+To Run PlanExCrew locally:
+
+1. Clone the Repository:
+    git clone https://github.com/Farnsworth-Enterprises/PlanExCrew.git
+2. Navigate to the Project Directory:
+    cd PlanExCrew
+3. Install Dependencies:
+    npm install
+4. Start the Development Server:
+    npm start
+
+## Live Demo
+Experience PlanExCrew live at planexcrew.netlify.app.
+
+## Acknowledgments
+
+Special thanks to the contributors:​
+
+    jbiehl88​
+
+    zluigon​
+
+For more details, visit the PlanExCrew GitHub repository.
