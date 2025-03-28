@@ -256,7 +256,6 @@ const Game = () => {
 					textAlign: 'center', 
 					padding: 2,
 					backgroundColor: "rgba(7, 7, 7, 0.7)",
-					padding: "10px", 
 					borderRadius: "8px",
 					border: "4px solid #7FFFD4",
 					color: "white",
