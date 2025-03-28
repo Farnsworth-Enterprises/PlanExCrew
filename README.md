@@ -32,4 +32,4 @@ Special thanks to the contributors:​
 - [Luis Gonzalez](https://github.com/zluigon)
 - [Jordan Biehl](https://github.com/jbiehl88)
 
-For more details, visit the PlanExCrew GitHub repository.
+For more details, visit the PlanExCrew GitHub repository [here](https://github.com/Farnsworth-Enterprises/PlanExCrew).
