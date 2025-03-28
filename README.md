@@ -1,3 +1,10 @@
 # PlanExCrew
 
-Futurama Management App - From a list of potential crew members, choose your crew of at most 3 to tackle the mission presented to you based on a difficulty score. Each crew member will have a rating to help the user chose who best to chose for the mission. After selection, the user will receive a mission result based on the difficulty of the mission and the competency total of the chosen crew members.
+PlanExCrew is a web-based application inspired by the animated series Futurama. It allows users to assemble a crew of up to three members to undertake various missions, each with a specified difficulty level. By evaluating each potential crew member's rating, users can strategically select the most suitable team to successfully complete missions.
+
+## Features
+- Crew Selection: Choose from a list of potential crew members, each with unique ratings indicating their competencies.​
+
+- Mission Assignment: Engage in missions with varying difficulty levels, requiring strategic crew assembly for successful completion.​
+
+- Outcome Evaluation: Receive results based on the combined competency of the selected crew members relative to the mission's difficulty.
