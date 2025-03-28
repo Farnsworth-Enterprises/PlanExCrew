@@ -36,4 +36,6 @@ Special thanks to the contributors:​
 - [Luis Gonzalez](https://github.com/zluigon)
 - [Jordan Biehl](https://github.com/jbiehl88)
 
+Special thanks to [futureamaapit.com](https://futuramaapi.com/)
+
 For more details, visit the PlanExCrew GitHub repository [here](https://github.com/Farnsworth-Enterprises/PlanExCrew).
