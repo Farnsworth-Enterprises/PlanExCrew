@@ -23,7 +23,7 @@ To Run PlanExCrew locally:
    `npm start`
 
 ## Live Demo
-Experience PlanExCrew live at [here](planexcrew.netlify.app).
+Experience PlanExCrew live at [here](https://planexcrew.netlify.app/).
 
 ## Acknowledgments
 
