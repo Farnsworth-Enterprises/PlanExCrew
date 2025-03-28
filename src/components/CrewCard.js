@@ -1,8 +1,17 @@
 import React from "react";
 
-import { Card, CardContent, Typography, Button } from "@mui/material";
+import {
+	Card,
+	CardContent,
+	Typography,
+	IconButton,
+	CardActionArea,
+	Box,
+} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import AddIcon from "@mui/icons-material/Add";
 
-const CrewCard = ({ character, additionalInfo, onSelectCrew }) => {
+const CrewCard = ({ character, onSelectCrew, isSelected, onRemove }) => {
 	return (
 		<Card
 			sx={{
@@ -11,63 +20,121 @@ const CrewCard = ({ character, additionalInfo, onSelectCrew }) => {
 				height: "100%",
 				width: "100%",
 				alignItems: "center",
-				border: "1px solid #ccc",
+				border: isSelected ? "2px solid #4CAF50" : "1px solid #ccc",
 				borderRadius: "12px",
-				boxShadow: "3px 3px 10px rgba(0, 0, 0, 0.1)",
+				boxShadow: isSelected
+					? "0 0 15px rgba(76, 175, 80, 0.3)"
+					: "3px 3px 10px rgba(0, 0, 0, 0.1)",
 				padding: 2,
+				backgroundColor: isSelected
+					? "rgba(76, 175, 80, 0.05)"
+					: "white",
+				position: "relative",
+				transition: "all 0.3s ease",
+				"&:hover": {
+					transform: "translateY(-5px)",
+					boxShadow: "0 5px 15px rgba(0, 0, 0, 0.2)",
+				},
 			}}
 		>
-			<Typography
-				variant="h6"
+			<Box
 				sx={{
-					textAlign: "center",
-					fontWeight: "bold",
-					marginBottom: "8px",
+					position: "absolute",
+					top: 8,
+					right: 8,
+					zIndex: 2,
 				}}
 			>
-				{character.name}
-			</Typography>
+				{isSelected ? (
+					<IconButton
+						onClick={(e) => {
+							e.stopPropagation();
+							onRemove(character);
+						}}
+						sx={{
+							color: "#f44336",
+							"&:hover": {
+								backgroundColor: "rgba(244, 67, 54, 0.1)",
+							},
+						}}
+					>
+						<CloseIcon />
+					</IconButton>
+				) : (
+					<IconButton
+						onClick={(e) => {
+							e.stopPropagation();
+							onSelectCrew(character);
+						}}
+						sx={{
+							color: "#4CAF50",
+							"&:hover": {
+								backgroundColor: "rgba(76, 175, 80, 0.1)",
+							},
+						}}
+					>
+						<AddIcon />
+					</IconButton>
+				)}
+			</Box>
 
-			{character.image && (
-				<img
-					src={character.image}
-					alt={character.name}
-					style={{
-						width: "120px",
-						height: "120px",
-						objectFit: "cover",
-						objectPosition: "top",
-						borderRadius: "8px",
-						marginBottom: "8px",
-					}}
-				/>
-			)}
-
-			<CardContent
+			<CardActionArea
+				onClick={() => !isSelected && onSelectCrew(character)}
 				sx={{
-					flexGrow: 1,
+					width: "100%",
 					display: "flex",
 					flexDirection: "column",
 					alignItems: "center",
-					justifyContent: "space-between",
-					paddingBottom: 3,
+					padding: 2,
 				}}
 			>
-				{additionalInfo[character.name] && (
-					<Typography
-						variant="subtitle1"
-						sx={{
-							fontWeight: "bold",
-							marginTop: "auto",
+				<Typography
+					variant="h6"
+					sx={{
+						textAlign: "center",
+						fontWeight: "bold",
+						marginBottom: "8px",
+						color: isSelected ? "#2E7D32" : "inherit",
+					}}
+				>
+					{character.name}
+				</Typography>
+
+				{character.image && (
+					<img
+						src={character.image}
+						alt={character.name}
+						style={{
+							width: "120px",
+							height: "120px",
+							objectFit: "cover",
+							objectPosition: "top",
+							borderRadius: "8px",
+							marginBottom: "8px",
 						}}
-					>
-						Rating: {additionalInfo[character.name].rating}
-					</Typography>
+					/>
 				)}
-			</CardContent>
-			<Button onClick={() => onSelectCrew(character)}>
-				Select {character.name}
-			</Button>
+
+				<CardContent
+					sx={{
+						flexGrow: 1,
+						display: "flex",
+						flexDirection: "column",
+						alignItems: "center",
+						justifyContent: "space-between",
+						paddingBottom: 3,
+					}}
+				>
+					{isSelected && (
+						<Typography
+							variant="subtitle1"
+							sx={{ fontWeight: "bold" }}
+						>
+							{character.details[0]}
+						</Typography>
+					)}
+				</CardContent>
+			</CardActionArea>
 		</Card>
 	);
 };
