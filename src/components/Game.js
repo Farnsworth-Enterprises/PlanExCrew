@@ -237,9 +237,32 @@ const Game = () => {
 	}
 
 	return (
-		<>
+		<Box
+		sx={{
+			position: "relative",
+			minHeight: "100vh",
+			minWidth: "100vw",
+			backgroundImage: `url("https://img.goodfon.com/original/1920x1080/0/9d/futurama-futurama-planet.jpg")`,
+			backgroundSize: "cover",
+			backgroundPosition: "center",
+			backgroundRepeat: "no-repeat",
+			backgroundAttachment: "fixed",
+			paddingTop: 10,
+		}}
+		>
+			
 			<Container>
-				<Typography variant="h4"> Current Mission</Typography>
+				<Typography variant="h4" sx={{
+					textAlign: 'center', 
+					padding: 2,
+					backgroundColor: "rgba(7, 7, 7, 0.7)",
+					padding: "10px", 
+					borderRadius: "8px",
+					border: "4px solid #7FFFD4",
+					color: "white",
+					}}> 
+					Current Mission
+					</Typography>
 				<MissionCard mission={currentMission} />
 				<CrewSection
 					crew={crew}
@@ -252,6 +275,7 @@ const Game = () => {
 						justifyContent: "center",
 						gap: 2,
 						my: 3,
+						padding: 3,
 					}}
 				>
 					<Button
@@ -270,11 +294,23 @@ const Game = () => {
 						color="secondary"
 						size="large"
 						onClick={getNewMission}
+						sx={{
+							backgroundColor: "purple",
+							color: "white"
+						}}
 					>
 						New Mission
 					</Button>
 				</Box>
-				<Typography variant="h4" sx={{ marginTop: 3 }}>
+				<Typography variant="h4" sx={{ 
+					marginTop: 3, 
+					textAlign: 'center',
+					backgroundColor: "rgba(7, 7, 7, 0.7)",
+					padding: "10px", 
+					borderRadius: "8px",
+					border: "4px solid #7FFFD4",
+					color: "white",
+					}}>
 					Available Crew
 				</Typography>
 				<Grid container spacing={2} sx={{ marginTop: 1 }}>
@@ -286,6 +322,7 @@ const Game = () => {
 							md={4}
 							lg={3}
 							key={character.id}
+							padding={4}
 						>
 							<CrewCard
 								character={character}
@@ -311,7 +348,7 @@ const Game = () => {
 					</Alert>
 				)}
 			</Snackbar>
-		</>
+		</Box>
 	);
 };
 

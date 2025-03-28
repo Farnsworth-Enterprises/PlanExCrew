@@ -26,9 +26,7 @@ const CrewCard = ({ character, onSelectCrew, isSelected, onRemove }) => {
 					? "0 0 15px rgba(76, 175, 80, 0.3)"
 					: "3px 3px 10px rgba(0, 0, 0, 0.1)",
 				padding: 2,
-				backgroundColor: isSelected
-					? "rgba(76, 175, 80, 0.05)"
-					: "white",
+				backgroundColor: "white",
 				position: "relative",
 				transition: "all 0.3s ease",
 				"&:hover": {
@@ -85,7 +83,7 @@ const CrewCard = ({ character, onSelectCrew, isSelected, onRemove }) => {
 					display: "flex",
 					flexDirection: "column",
 					alignItems: "center",
-					padding: 2,
+					
 				}}
 			>
 				<Typography
@@ -94,7 +92,7 @@ const CrewCard = ({ character, onSelectCrew, isSelected, onRemove }) => {
 						textAlign: "center",
 						fontWeight: "bold",
 						marginBottom: "8px",
-						color: isSelected ? "#2E7D32" : "inherit",
+						// color: isSelected ? "#2E7D32" : "inherit",
 					}}
 				>
 					{character.name}
@@ -110,7 +108,6 @@ const CrewCard = ({ character, onSelectCrew, isSelected, onRemove }) => {
 							objectFit: "cover",
 							objectPosition: "top",
 							borderRadius: "8px",
-							marginBottom: "8px",
 						}}
 					/>
 				)}
@@ -122,7 +119,7 @@ const CrewCard = ({ character, onSelectCrew, isSelected, onRemove }) => {
 						flexDirection: "column",
 						alignItems: "center",
 						justifyContent: "space-between",
-						paddingBottom: 3,
+						
 					}}
 				>
 					{isSelected && (
