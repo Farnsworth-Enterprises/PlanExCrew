@@ -172,8 +172,8 @@ const Game = () => {
 		const newAttempts = attempts + 1;
 		setAttempts(newAttempts);
 
-		const crewRating = calculateCrewRating();
-		const missionDifficulty = currentMission.difficulty;
+		// const crewRating = calculateCrewRating();
+		// const missionDifficulty = currentMission.difficulty;
 		const successProbability = calculateSuccessProbability();
 		const success = Math.random() * 100 < successProbability;
 
@@ -208,7 +208,6 @@ const Game = () => {
 	}, [
 		crew,
 		currentMission,
-		calculateCrewRating,
 		calculateSuccessProbability,
 		showAlert,
 		attempts,
@@ -354,7 +353,7 @@ const Game = () => {
 				open={!!currentAlert}
 				autoHideDuration={2500}
 				onClose={handleCloseSnackbar}
-				anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+				anchorOrigin={{ vertical: "top", horizontal: "center" }}
 			>
 				{currentAlert && (
 					<Alert
