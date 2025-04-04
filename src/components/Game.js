@@ -19,6 +19,8 @@ const selectedCharacterIds = [
 	1, 16, 425, 420, 421, 424, 382, 423, 278, 336, 320, 305, 279, 177, 179,
 ];
 
+const MAX_ATTEMPTS = 3;
+
 const getRandomMission = () => {
 	const randIndex = Math.floor(Math.random() * missions.length);
 	return missions[randIndex].items[
@@ -34,6 +36,7 @@ const Game = () => {
 	const [missionResult, setMissionResult] = useState(null);
 	const [currentMission, setCurrentMission] = useState(getRandomMission());
 	const [error, setError] = useState(null);
+	const [attempts, setAttempts] = useState(0);
 
 	useEffect(() => {
 		const fetchCharacter = async (id) => {
@@ -47,7 +50,6 @@ const Game = () => {
 				const data = await response.json();
 				return data;
 			} catch (error) {
-				console.error("Error fetching character:", error);
 				throw error;
 			}
 		};
@@ -68,7 +70,6 @@ const Game = () => {
 				setCharacters(charactersWithInfo);
 			} catch (error) {
 				setError("Failed to load characters. Please try again later.");
-				console.error("Error fetching characters:", error);
 			}
 		};
 
@@ -88,6 +89,12 @@ const Game = () => {
 
 	const showAlert = useCallback((message, severity) => {
 		setAlerts((prev) => [...prev, { message, severity }]);
+	}, []);
+
+	const getNewMission = useCallback(() => {
+		setCrew([]);
+		setCurrentMission(getRandomMission());
+		setAttempts(0);
 	}, []);
 
 	const onSelectCrew = useCallback(
@@ -140,19 +147,14 @@ const Game = () => {
 		const crewRating = calculateCrewRating();
 		const missionDifficulty = currentMission.difficulty;
 
-		// Base probability starts at 50%
 		let probability = 50;
 
-		// Crew rating bonus: each point above difficulty adds 10% to probability
-		// Each point below difficulty subtracts 10% from probability
 		const ratingDifference = crewRating - missionDifficulty;
 		probability += ratingDifference * 10;
 
-		// Add a small random factor (±5%) to make it more interesting
 		const randomFactor = Math.random() * 10 - 5;
 		probability += randomFactor;
 
-		// Clamp probability between 5% and 95%
 		probability = Math.max(5, Math.min(95, probability));
 
 		return probability;
@@ -167,6 +169,9 @@ const Game = () => {
 			return;
 		}
 
+		const newAttempts = attempts + 1;
+		setAttempts(newAttempts);
+
 		const crewRating = calculateCrewRating();
 		const missionDifficulty = currentMission.difficulty;
 		const successProbability = calculateSuccessProbability();
@@ -175,16 +180,10 @@ const Game = () => {
 		const result = {
 			success,
 			message: success
-				? `Mission Success! Your crew's average rating of ${crewRating.toFixed(
-						1
-				  )}/10 had a ${successProbability.toFixed(
-						1
-				  )}% chance of completing the difficulty ${missionDifficulty} mission, and they pulled it off!`
-				: `Mission Failed! Despite having a ${successProbability.toFixed(
-						1
-				  )}% chance with your crew's average rating of ${crewRating.toFixed(
-						1
-				  )}/10, the difficulty ${missionDifficulty} mission proved too challenging.`,
+				? `Mission Success! (${successProbability.toFixed(0)}% chance)`
+				: `Mission Failed! Had ${successProbability.toFixed(
+						0
+				  )}% chance of success`,
 			mission: currentMission,
 			crew: [...crew],
 			timestamp: new Date().toISOString(),
@@ -193,12 +192,18 @@ const Game = () => {
 		setMissionResult(result);
 		showAlert(result.message, result.success ? "success" : "error");
 
-		// Only reset crew and get new mission on success
 		if (success) {
 			setTimeout(() => {
 				setCrew([]);
 				setCurrentMission(getRandomMission());
+				setAttempts(0);
 			}, 3000);
+		} else if (newAttempts >= MAX_ATTEMPTS) {
+			showAlert(
+				`No more attempts left! Getting a new mission...`,
+				"warning"
+			);
+			setTimeout(getNewMission, 2000);
 		}
 	}, [
 		crew,
@@ -206,12 +211,9 @@ const Game = () => {
 		calculateCrewRating,
 		calculateSuccessProbability,
 		showAlert,
+		attempts,
+		getNewMission,
 	]);
-
-	const getNewMission = useCallback(() => {
-		setCrew([]);
-		setCurrentMission(getRandomMission());
-	}, []);
 
 	if (error) {
 		return (
@@ -263,6 +265,15 @@ const Game = () => {
 					}}
 				>
 					Current Mission
+					<Typography
+						variant="subtitle1"
+						sx={{
+							color: attempts >= MAX_ATTEMPTS ? "red" : "white",
+							mt: 1,
+						}}
+					>
+						Attempts: {attempts}/{MAX_ATTEMPTS}
+					</Typography>
 				</Typography>
 				<MissionCard mission={currentMission} />
 				<CrewSection
@@ -284,19 +295,18 @@ const Game = () => {
 						color="primary"
 						size="large"
 						onClick={attemptMission}
-						disabled={crew.length !== 3}
+						disabled={crew.length !== 3 || attempts >= MAX_ATTEMPTS}
 					>
 						{missionResult && !missionResult.success
 							? "Retry Mission"
 							: "Attempt Mission"}
 					</Button>
 					<Button
-						variant="outlined"
+						variant="contained"
 						color="secondary"
 						size="large"
 						onClick={getNewMission}
 						sx={{
-							backgroundColor: "purple",
 							color: "white",
 						}}
 					>

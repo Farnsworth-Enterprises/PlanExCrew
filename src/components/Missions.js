@@ -173,7 +173,7 @@ const Missions = () => {
 						marginBottom: "5px",
 						color: "white",
 						backgroundColor: "rgba(7, 7, 7, 0.7)",
-						padding: "10px", 
+						padding: "10px",
 						borderRadius: "8px",
 						border: "4px solid #7FFFD4",
 					}}
@@ -193,7 +193,7 @@ const Missions = () => {
 									fontWeight: "bold",
 									color: "white",
 									backgroundColor: "rgba(7, 7, 7, 0.7)",
-									padding: "10px", 
+									padding: "10px",
 									borderRadius: "8px",
 									border: "2px solid white",
 									display: "inline-block",

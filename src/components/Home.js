@@ -46,11 +46,7 @@ const Home = () => {
 						mt: 2,
 						textDecoration: "underline",
 						textShadow: "3px 3px 6px rgba(192, 17, 17, 0.8)",
-						// backgroundColor: "rgba(7, 7, 7, 0.7)",
-						// borderRadius: "8px",
-						// padding: "10px",
 						fontWeight: "bold",
-						// border: "4px solid #7FFFD4",
 					}}
 				>
 					Create a crew and complete missions!
