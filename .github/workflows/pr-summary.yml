@@ -1,0 +1,23 @@
+name: PR Summary Generator
+
+on:
+    pull_request:
+        types: [opened, synchronize]
+
+jobs:
+    generate-summary:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            pull-requests: write
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Generate PR Summary
+              uses: Farnsworth-Enterprises/Morbo@v.1.0.4
+              with:
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
+                  ollama-url: ${{ secrets.OLLAMA_URL }}
+                  model-name: "deepseek-r1:8b"
